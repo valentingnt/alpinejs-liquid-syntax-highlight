@@ -1,20 +1,23 @@
 {
-  	"name": "alpinejs-syntax-highlight",
-	"displayName": "Alpine.js Syntax Highlight",
-	"description": "Javascript syntax highlighting for Alpine.js x- attributes",
+  "name": "alpinejs-liquid-syntax-highlight",
+	"displayName": "Alpine.js x Liquid - Syntax Highlight",
+	"description": "Javascript syntax highlighting for Alpine.js x- attributes in Liquid and HTML files",
 	"author": "Greg Ransons",
 	"license": "MIT",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"icon": "assets/alpine_logo.png",
-	"publisher": "sperovita",
+	"publisher": "valentingnt",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Sperovita/alpinejs-syntax-highlight.git"
+		"url": "https://github.com/valentingnt/alpinejs-liquid-syntax-highlight.git"
 	},
 	"keywords": [
 		"alpine",
 		"alpinejs",
-		"alpine.js"
+		"alpine.js",
+		"liquid",
+		"syntax",
+		"highlight"
 	],
 	"engines": {
 		"vscode": "^1.63.0"
@@ -25,9 +28,42 @@
 	"contributes": {
 		"languages": [
 			{
-			  "id": "inline-alpinejs"
+			  "id": "inline-alpinejs",
+			  "configuration": "./language-configuration.json"
 			}
 		],
+		"configurationDefaults": {
+			"editor.tokenColorCustomizations": {
+				"textMateRules": [
+					{
+						"scope": "keyword.other.alpine.directive.html",
+						"settings": {
+							"foreground": "#3BA676",
+							"fontStyle": "bold"
+						}
+					},
+					{
+						"scope": "keyword.other.alpine.shorthand.html",
+						"settings": {
+							"foreground": "#3BA676",
+							"fontStyle": "bold"
+						}
+					},
+					{
+						"scope": "support.type.property-name.alpine.modifier.html",
+						"settings": {
+							"foreground": "#64B897"
+						}
+					},
+					{
+						"scope": "expression.interpolated.alpine",
+						"settings": {
+							"foreground": "#2A8F61"
+						}
+					}
+				]
+			}
+		},
 		"grammars": [
 			{
 				"language": "inline-alpinejs",
@@ -36,7 +72,8 @@
 				"injectTo": [
 					"text.html.derivative", 
 					"text.html.php", 
-					"text.html.twig"
+					"text.html.twig",
+					"text.html.liquid"
 				],
 				"embeddedLanguages": {
 					"meta.embedded.inline.alpinejs": "javascript"
